@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\csec\\1s\\prg\\gitprojects\\GuessTheWord\\GuessTheWord\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C675C6E-F647-4813-B7E8-531DA4AB7C28}|GuessTheWord\\GuessTheWord.csproj|e:\\csec\\1s\\prg\\gitprojects\\guesstheword\\guesstheword\\guesstheword\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C675C6E-F647-4813-B7E8-531DA4AB7C28}|GuessTheWord\\GuessTheWord.csproj|solutionrelative:guesstheword\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\csec\\1s\\prg\\gitprojects\\GuessTheWord\\GuessTheWord\\GuessTheWord\\Program.cs",
+              "RelativeDocumentMoniker": "GuessTheWord\\Program.cs",
+              "ToolTip": "E:\\csec\\1s\\prg\\gitprojects\\GuessTheWord\\GuessTheWord\\GuessTheWord\\Program.cs",
+              "RelativeToolTip": "GuessTheWord\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T16:54:07.887Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
