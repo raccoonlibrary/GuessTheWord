@@ -25,5 +25,38 @@
 
 class Homework
 {
-    
+    static void Main(string[] args) // Player can choose an option from a list
+    {
+
+    }
+
+    private static void OptionsMenu() // List all options the user can choose
+    {
+
+    }
+
+    private static void SortAndDisplayLeaderboard() // Sort the leaderboard by score and display all names + scores
+    {
+
+    }
+
+    private static void RegisterPlayer() // Register the current user's name to a static string, check that the name is not empty
+    {
+
+    }
+
+    private static void GuessTheWord() // Main method for the game GuessTheWord
+    {
+
+    }
+
+    private static void SaveScoreToLeaderboard() // Save the current user's name and score to the leaderboard
+    {
+
+    }
+
+    private static void OfferToPlayAgain() // Give the user the option to play again
+    {
+
+    }
 }
