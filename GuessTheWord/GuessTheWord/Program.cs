@@ -234,11 +234,25 @@ class Homework
 
     private static void SaveScoreToLeaderboard() // Save the current user's name and score to the leaderboard
     {
+        string filepath = "leaderboard.txt"; 
 
+
+        File.AppendAllText(filepath, $"{currentUser} , {currentScore}\n"); // Add this blueprint of current username and current score to the leaderboard.txt
+        Console.WriteLine("\nScore successfully registered!"); // Show message that the score was registered to the leaderboard
     }
 
     private static void OfferToPlayAgain() // Give the user the option to play again
     {
-
+        Console.WriteLine("Do you want to play again? (Yes/No)");
+        string playAgainInput = Console.ReadLine();
+        if (playAgainInput.ToUpper() == "YES")
+        {
+            GuessTheWord();
+        }
+        else
+        {
+            Console.WriteLine("Thank you for playing!");
+            return;
+        }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuessTheWord")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+accf3b89b0a59fba5838f1f22bee89c8330e43e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c74992eaa33832308d690a2a286ef0064c32bd73")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuessTheWord")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuessTheWord")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
