@@ -105,7 +105,131 @@ class Homework
 
     private static void GuessTheWord() // Main method for the game GuessTheWord
     {
+        RegisterPlayer(); // Register the current player
+        Console.WriteLine($"Successfully registered {currentUser}, Welcome to Guess The Word!");
 
+        var allPossibleWords = LoadWordsFromFile();
+
+        for (int difficultyIndex = 0; difficultyIndex <= 2; difficultyIndex++)
+        {
+            string currentLevel;
+            if (difficultyIndex == 0) currentLevel = "EASY";
+            else if (difficultyIndex == 1) currentLevel = "MEDIUM";
+            else currentLevel = "HARD";
+            Console.WriteLine($"\nLevel {difficultyIndex}: {currentLevel}\n");
+
+            var random = new Random();
+            string wordToGuess = allPossibleWords[difficultyIndex][random.Next(allPossibleWords[difficultyIndex].Count)].ToUpper(); // Pick a random word from the file
+
+            int currentAttemptCount = 10; // Ten attempts allowed per level
+            char[] hiddenWord = new char[wordToGuess.Length];
+            for (int i = 0; i < hiddenWord.Length; i++) hiddenWord[i] = '_';
+
+            List<char> guessedLetters = new List<char>();
+            bool isGameWon = false;
+
+            while (currentAttemptCount > 0 && !isGameWon)
+            {
+                Console.WriteLine($"Word to guess: {new string(hiddenWord)}");
+                Console.WriteLine($"Guessed letters: {string.Join(", ", guessedLetters)}");
+                Console.WriteLine($"Lives remaining: {currentAttemptCount}\n");
+
+                Console.Write("Please enter your guess (just a single letter): ");
+                string input = Console.ReadLine().ToUpper();
+                if (string.IsNullOrEmpty(input) || input.Length != 1 || !char.IsLetter(input[0])) // When user inputs anything but a single letter
+                {
+                    Console.WriteLine("Invalid input! Please enter just a single letter.\n");
+                    continue;
+                }
+
+                char guessedLetter = input[0];
+
+                if (guessedLetters.Contains(guessedLetter))
+                {
+                    Console.WriteLine("You already guessed that letter!\n");
+                    continue;
+                }
+
+                guessedLetters.Add(guessedLetter);
+
+                if (wordToGuess.Contains(guessedLetter))
+                {
+                    Console.WriteLine("Correct guess!\n");
+                    for (int i = 0; i < wordToGuess.Length; i++)
+                    {
+                        if (wordToGuess[i] == guessedLetter)
+                        {
+                            hiddenWord[i] = guessedLetter;
+                        }
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Wrong guess!\n");
+                    currentAttemptCount--;
+                }
+
+                if (new string(hiddenWord) == wordToGuess)
+                {
+                    isGameWon = true;
+                }
+            }
+
+            int score;
+
+            if (isGameWon)
+            {
+                score = currentAttemptCount * 10;
+                currentScore += score;
+                Console.WriteLine($"Congratulations! You guessed the word: {wordToGuess}\n");
+            }
+
+            else
+            {
+                Console.WriteLine($"Game over! The word was: {wordToGuess}");
+                score = 0;
+                currentScore += score;
+                Console.WriteLine($"Total score: {currentScore}\n");
+            }
+
+            Console.WriteLine($"Level {difficultyIndex} complete! Current score: {currentScore}\n");
+        }
+
+        SaveScoreToLeaderboard(); // Save player name and score to leaderboard
+        OfferToPlayAgain(); // Offer option to play again
+    }
+
+    static public List<List<string>> LoadWordsFromFile() // Reads the wordstoguess.txt, splits the words into additional lists based upon difficulty, returns the list of lists
+    {
+        string filepath = "wordstoguess.txt"; // Relevant .txt file, define path to the wordstoguess file
+        // File HAS to be in this format:
+        // DIFFICULTY : word1 ,  word2 , word3 , ...
+        // Otherwise the program assumes that e.g. "word4, word5" is a full word
+        // -> Softlocks the game because neither "," nor " " is an allowed input
+
+
+        var difficultyLevel = new List<List<string>> // List (of a list) to store our difficulty levels -> so that in the following, the words can be sorted into them
+        {
+            new List<string>(), // difficultyLevel[0] = easy
+            new List<string>(), // difficultyLevel[1] = medium
+            new List<string>()  // difficultyLevel[2] = hard
+        };
+
+        foreach (var line in File.ReadAllLines(filepath))
+        {
+            var partitions = line.Split(" : "); // Partitions have to be separated by :
+            if (partitions.Length != 2) continue; // check that there are only 2 "partitions" so only DIFFICULTY : word1 , word2 , ...
+
+            string difficulty = partitions[0]; // First partition = EASY / MEDIUM / HARD
+            var words = partitions[1].Split(" , "); // Second partition = list of words = word1 , word2 , ...
+
+            if (difficulty == "EASY") difficultyLevel[0].AddRange(words); // Add all items from "words" into difficultyLevel[0] (EASY)
+            else if (difficulty == "MEDIUM") difficultyLevel[1].AddRange(words); // Add all items from "words" into difficultyLevel[1] (MEDIUM)
+            else if (difficulty == "HARD") difficultyLevel[2].AddRange(words); // Add all items from "words" into difficultyLevel[2] (HARD)
+        }
+
+        return difficultyLevel;
     }
 
     private static void SaveScoreToLeaderboard() // Save the current user's name and score to the leaderboard
