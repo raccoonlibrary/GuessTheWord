@@ -27,12 +27,41 @@ class Homework
 {
     static void Main(string[] args) // Player can choose an option from a list
     {
+        bool exit = false;
 
+        do
+        {
+            OptionsMenu(); // List all options the user can choose
+            string selectedOption = Console.ReadLine();
+            switch (selectedOption) // Save the users input and compare to the list of options
+            {
+                case "1":
+                case "Leaderboard":
+                case "Show the Leaderboard for GuessTheWord":
+                    SortAndDisplayLeaderboard(); // Option 1: Display the leaderboard
+                    break;
+                case "2":
+                case "Play":
+                case "Play GuessTheWord":
+                    GuessTheWord(); // Option 2: Play GuessTheWord
+                    break;
+                case "3":
+                case "Exit":
+                    exit = true; // Option 3: Exit the program
+                    break;
+                default:
+                    exit = true; // Default: (Any other input) Exit the program
+                    break;
+            }
+        } while (!exit); // Loop until exit = true
     }
 
     private static void OptionsMenu() // List all options the user can choose
     {
-
+        Console.WriteLine("\nPlease select an option.");
+        Console.WriteLine("Option 1 - Show the Leaderboard for GuessTheWord");
+        Console.WriteLine("Option 2 - Play GuessTheWord");
+        Console.WriteLine("Option 3 - Exit\n");
     }
 
     private static void SortAndDisplayLeaderboard() // Sort the leaderboard by score and display all names + scores

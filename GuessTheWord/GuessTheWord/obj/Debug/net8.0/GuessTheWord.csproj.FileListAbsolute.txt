@@ -1,0 +1,15 @@
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\bin\Debug\net8.0\GuessTheWord.exe
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\bin\Debug\net8.0\GuessTheWord.deps.json
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\bin\Debug\net8.0\GuessTheWord.runtimeconfig.json
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\bin\Debug\net8.0\GuessTheWord.dll
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\bin\Debug\net8.0\GuessTheWord.pdb
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.GeneratedMSBuildEditorConfig.editorconfig
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.AssemblyInfoInputs.cache
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.AssemblyInfo.cs
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.csproj.CoreCompileInputs.cache
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.sourcelink.json
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.dll
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\refint\GuessTheWord.dll
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.pdb
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\GuessTheWord.genruntimeconfig.cache
+E:\csec\1s\prg\gitprojects\GuessTheWord\GuessTheWord\GuessTheWord\obj\Debug\net8.0\ref\GuessTheWord.dll
