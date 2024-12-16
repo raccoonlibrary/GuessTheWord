@@ -25,6 +25,9 @@
 
 class Homework
 {
+    private static string currentUser;
+    private static int currentScore;
+
     static void Main(string[] args) // Player can choose an option from a list
     {
         bool exit = false;
@@ -90,7 +93,14 @@ class Homework
 
     private static void RegisterPlayer() // Register the current user's name to a static string, check that the name is not empty
     {
+        Console.WriteLine("\nPlease enter your name:");
+        currentUser = Console.ReadLine();
 
+        if (string.IsNullOrEmpty(currentUser)) // Check that the input is not empty
+        {
+            Console.WriteLine("Name cannot be empty, please register a name.");
+            RegisterPlayer(); // Loop until name is not empty
+        }
     }
 
     private static void GuessTheWord() // Main method for the game GuessTheWord
