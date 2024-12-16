@@ -95,6 +95,7 @@ class Homework
     {
         Console.WriteLine("\nPlease enter your name:");
         currentUser = Console.ReadLine();
+        currentScore = 0;
 
         if (string.IsNullOrEmpty(currentUser)) // Check that the input is not empty
         {
