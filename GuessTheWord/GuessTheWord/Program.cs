@@ -109,87 +109,87 @@ class Homework
         RegisterPlayer(); // Register the current player
         Console.WriteLine($"Successfully registered {currentUser}, Welcome to Guess The Word!");
 
-        var allPossibleWords = LoadWordsFromFile();
+        var allPossibleWords = LoadWordsFromFile(); // Return a list of all words based upon current difficulty
 
-        for (int difficultyIndex = 0; difficultyIndex <= 2; difficultyIndex++)
+        for (int difficultyIndex = 0; difficultyIndex <= 2; difficultyIndex++) // Loop through all difficulties
         {
             string currentLevel;
             if (difficultyIndex == 0) currentLevel = "EASY";
             else if (difficultyIndex == 1) currentLevel = "MEDIUM";
             else currentLevel = "HARD";
-            Console.WriteLine($"\nLevel {difficultyIndex}: {currentLevel}\n");
+            Console.WriteLine($"\nLevel {difficultyIndex}: {currentLevel}\n"); // Display what level the player is currently on
 
             var random = new Random();
-            string wordToGuess = allPossibleWords[difficultyIndex][random.Next(allPossibleWords[difficultyIndex].Count)].ToUpper(); // Pick a random word from the file
+            string wordToGuess = allPossibleWords[difficultyIndex][random.Next(allPossibleWords[difficultyIndex].Count)].ToUpper(); // Pick a random word from the file, converted to uppercase
 
             int currentAttemptCount = 10; // Ten attempts allowed per level
-            char[] hiddenWord = new char[wordToGuess.Length];
-            for (int i = 0; i < hiddenWord.Length; i++) hiddenWord[i] = '_';
+            char[] hiddenWord = new char[wordToGuess.Length]; // Array for the hidden word ->
+            for (int i = 0; i < hiddenWord.Length; i++) hiddenWord[i] = '_'; // Represent the hidden word in this format: _ _ _ _ _ ... _
+            List<char> guessedLetters = new List<char>(); // List to track the letters that have been guessed
+            bool isLevelWon = false; // Flag to check if the level has been won
 
-            List<char> guessedLetters = new List<char>();
-            bool isGameWon = false;
-
-            while (currentAttemptCount > 0 && !isGameWon)
+            while (currentAttemptCount > 0 && !isLevelWon) // Loop until the player runs out of attempts or the level is won
             {
                 Console.WriteLine($"Word to guess: {new string(hiddenWord)}");
                 Console.WriteLine($"Guessed letters: {string.Join(", ", guessedLetters)}");
                 Console.WriteLine($"Lives remaining: {currentAttemptCount}\n");
 
-                Console.Write("Please enter your guess (just a single letter): ");
-                string input = Console.ReadLine().ToUpper();
-                if (string.IsNullOrEmpty(input) || input.Length != 1 || !char.IsLetter(input[0])) // When user inputs anything but a single letter
+                Console.Write("Please enter your guess (only a single letter): ");
+                string input = Console.ReadLine().ToUpper(); // Read input and convert to a uppercase letter
+
+                if (string.IsNullOrEmpty(input) || input.Length != 1 || !char.IsLetter(input[0])) // Check if the user inputs anything but a single letter
                 {
-                    Console.WriteLine("Invalid input! Please enter just a single letter.\n");
+                    Console.WriteLine("Invalid input! Please only enter a single letter.\n");
                     continue;
                 }
 
-                char guessedLetter = input[0];
+                char guessedLetter = input[0]; // Grab the letter that the player guessed
 
-                if (guessedLetters.Contains(guessedLetter))
+                if (guessedLetters.Contains(guessedLetter)) // Check if the letter was already guessed
                 {
                     Console.WriteLine("You already guessed that letter!\n");
                     continue;
                 }
 
-                guessedLetters.Add(guessedLetter);
+                guessedLetters.Add(guessedLetter); // Add the letter that was just guessed to the list of letters that have been guessed within this level
 
-                if (wordToGuess.Contains(guessedLetter))
+                if (wordToGuess.Contains(guessedLetter)) // Check if the letter is contained within the word the player has to guess
                 {
                     Console.WriteLine("Correct guess!\n");
                     for (int i = 0; i < wordToGuess.Length; i++)
                     {
                         if (wordToGuess[i] == guessedLetter)
                         {
-                            hiddenWord[i] = guessedLetter;
+                            hiddenWord[i] = guessedLetter; // Reveal letter within the hidden word E.g. _ _ A _ _ _
                         }
                     }
                 }
 
-                else
+                else // Assume the letter is not contained within the word the player has to guess
                 {
                     Console.WriteLine("Wrong guess!\n");
                     currentAttemptCount--;
                 }
 
-                if (new string(hiddenWord) == wordToGuess)
+                if (new string(hiddenWord) == wordToGuess) // If hidden word is fully revealed = Level is won
                 {
-                    isGameWon = true;
+                    isLevelWon = true;
                 }
             }
 
-            int score;
+            int score; // Initialize the score per level
 
-            if (isGameWon)
+            if (isLevelWon) // Level was won
             {
-                score = currentAttemptCount * 10;
-                currentScore += score;
+                score = currentAttemptCount * 10; // 10 points per attempt remaining
+                currentScore += score; // Add score from this level onto the total score
                 Console.WriteLine($"Congratulations! You guessed the word: {wordToGuess}\n");
                 Console.WriteLine($"Level {difficultyIndex} success! Current score: {currentScore}\n");
             }
 
-            else
+            else // No attempts are left 
             {
-                score = 0;
+                score = 0; // 0 as no attempt is remaining
                 currentScore += score;
                 Console.WriteLine($"Game over! The word was: {wordToGuess}");
                 Console.WriteLine($"Level {difficultyIndex} failure! Current score: {currentScore}\n");
