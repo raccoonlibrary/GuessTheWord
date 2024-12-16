@@ -1,0 +1,3 @@
+Ada , 270
+Claire , 200
+Leon , 190
