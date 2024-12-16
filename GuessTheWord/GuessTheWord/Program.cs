@@ -184,17 +184,16 @@ class Homework
                 score = currentAttemptCount * 10;
                 currentScore += score;
                 Console.WriteLine($"Congratulations! You guessed the word: {wordToGuess}\n");
+                Console.WriteLine($"Level {difficultyIndex} success! Current score: {currentScore}\n");
             }
 
             else
             {
-                Console.WriteLine($"Game over! The word was: {wordToGuess}");
                 score = 0;
                 currentScore += score;
-                Console.WriteLine($"Total score: {currentScore}\n");
+                Console.WriteLine($"Game over! The word was: {wordToGuess}");
+                Console.WriteLine($"Level {difficultyIndex} failure! Current score: {currentScore}\n");
             }
-
-            Console.WriteLine($"Level {difficultyIndex} complete! Current score: {currentScore}\n");
         }
 
         SaveScoreToLeaderboard(); // Save player name and score to leaderboard
