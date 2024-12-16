@@ -66,7 +66,26 @@ class Homework
 
     private static void SortAndDisplayLeaderboard() // Sort the leaderboard by score and display all names + scores
     {
+        string filepath = "leaderboard.txt"; // Relevant .txt file, define path to the leadeboard file
 
+
+        var sortedLines = File.ReadAllLines(filepath) // Read all lines from the file
+            .Select(line => // Project all lines from the file into a new form ->
+            {
+                var parts = line.Split(','); // Split each line into 2 partitions
+                return new
+                {
+                    User = parts[0].Trim(), // First partition = user -> trim to remove leading & trailing whitespaces
+                    Score = int.Parse(parts[1].Trim()) // Second partition = score -> trim to remove leading & trailing whitespaces
+                };
+            })
+            .OrderByDescending(entry => entry.Score) // Sort the lines by score (highest first)
+            .Select(entry => $"{entry.User} , {entry.Score}"); // Blueprint for the format of each line
+
+        File.WriteAllLines(filepath, sortedLines); // Write the newly formatted lines into the file
+
+        Console.WriteLine("\nLeaderboard:");
+        Console.WriteLine(File.ReadAllText(filepath)); // List the contents of the file
     }
 
     private static void RegisterPlayer() // Register the current user's name to a static string, check that the name is not empty
