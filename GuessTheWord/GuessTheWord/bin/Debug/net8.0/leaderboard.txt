@@ -1,3 +1,6 @@
+Wesker , 280
 Ada , 270
+Jill , 220
+Sherry , 210
 Claire , 200
 Leon , 190
