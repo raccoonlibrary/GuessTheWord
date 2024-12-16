@@ -1,0 +1,3 @@
+EASY : cat , dog , sun , pie , lab , bread , beer , girl , boy , lake
+MEDIUM : planet , flower , castle , injury , region , engine , wedding , elevator , music , studio , combo , virus
+HARD : dinosaur , umbrella , engineering , suggestion , attitude , negotiation , management , understanding , reputation , contribution
